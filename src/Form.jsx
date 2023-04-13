@@ -4,15 +4,20 @@ const Form = () => {
     let name = useRef();
     let cource = useRef();
     let country = useRef();
+    let man = useRef();
+    let woman = useRef();
 
     const submitData = (e) => {
         e.preventDefault();
         alert(`First Name : ${name.current.value}
           cource : ${cource.current.value}
-          country : ${country.current.value}`);
+          country : ${country.current.value}
+          Gender : ${man.current.checked === true ? man.current.value : woman.current.value}`);
         name.current.value = "";
         cource.current.value = "";
         country.current.value = "";
+        man.current.checked = false;
+        woman.current.checked = false;
     };
     return (
         <section>
@@ -36,6 +41,10 @@ const Form = () => {
                     <option value="UK">UK</option>
                 </select>
                 <br />
+                <input type="radio" className="main1" name="Gender" ref={man} value="man"/>Man
+                <br />
+                <input type="radio" className="main2" name="Gender" ref={woman} value="woman"/>woman
+                
                 <input type="submit" value="Submit" id="submit" />
             </form>
         </section>
